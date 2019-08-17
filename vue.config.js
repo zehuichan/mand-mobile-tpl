@@ -1,12 +1,4 @@
-const path = require('path').browserslistrc
-  .editorconfig
-  .env.development
-  .env.production
-  .env.staging
-  .gitignore
-babel.config.js
-postcss.config.js
-vue.config.js
+const path = require('path')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
