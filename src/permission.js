@@ -1,22 +1,30 @@
 import router from './router'
 import store from './store'
-
-const whiteList = ['/guide', '/fastLogin']// no redirect whitelist
+// progress bar
+import NProgress from 'nprogress'
+// progress bar style
+import 'nprogress/nprogress.css'
+// NProgress Configuration
+NProgress.configure({showSpinner: false})
 
 router.beforeEach(async (to, from, next) => {
-  // store.commit('SET_LOADING_STATE', true)
+  // start progress bar
+  NProgress.start()
+
   if (store.getters.username) {
     next()
   } else {
-    store.dispatch('GetUserInfo').then(()=>{
-      store.dispatch('GetAddressList')
+    try {
+      await store.dispatch('GetUserInfo')
+      await store.dispatch('GetAddressList')
       next()
-    }).catch(() => {
+    } catch (error) {
+      console.log('error', error)
       next('/500')
-    })
+    }
   }
 })
 
 router.afterEach(() => {
-  // store.commit('SET_LOADING_STATE', false)
+  NProgress.done()
 })

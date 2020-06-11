@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <transition name="fade" mode="out-in">
-      <router-view/>
-    </transition>
+    <router-view/>
   </div>
 </template>
 
@@ -11,3 +9,10 @@
     name: 'App'
   }
 </script>
+
+<style>
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+</style>

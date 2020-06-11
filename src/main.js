@@ -1,7 +1,12 @@
+// import 'amfe-flexible'
+// with polyfills
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
+
 import Vue from 'vue'
 
 // A modern alternative to CSS resets
-import 'normalize.css/normalize.css'
+import 'normalize.css'
 
 import '@/assets/less/index.less'
 
@@ -23,12 +28,6 @@ if ('addEventListener' in document && 'ontouchstart' in window) {
   }, false)
 }
 
-
-import {Toast, Dialog} from 'mand-mobile'
-
-Vue.use(Toast)
-Vue.use(Dialog)
-
 import './permission'
 
 // 微信jssdk
@@ -49,8 +48,9 @@ Object.keys(filters).forEach((key) => {
 Vue.config.productionTip = false
 
 new Vue({
+  el: '#app',
   router,
   store,
   i18n,
   render: h => h(App)
-}).$mount('#app')
+})
