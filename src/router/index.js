@@ -23,7 +23,6 @@ const My = () => import('@/views/my/my')
 
 Vue.use(Router)
 
-
 export const routes = [
   {path: '/', redirect: 'home'},
   {
